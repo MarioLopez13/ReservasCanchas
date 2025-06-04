@@ -1,0 +1,26 @@
+<div class="historial-wrapper">
+  <h2>Mis Reservas</h2>
+
+  <ng-container *ngIf="historial.length > 0; else sinReservas">
+    <ul>
+      <li *ngFor="let reserva of historial">
+        <p><strong>Cancha:</strong> {{ reserva.horario?.cancha?.nombre || 'N/A' }}</p>
+        <p><strong>Horario:</strong> {{ reserva.horario?.horaInicio }} - {{ reserva.horario?.horaFin }}</p>
+        <p><strong>Estado:</strong> {{ reserva.estado }}</p>
+
+        <button 
+          *ngIf="reserva.estado === 'confirmada'" 
+          class="btn-cancelar" 
+          (click)="cancelarReserva(reserva.id)">
+          Cancelar
+        </button>
+
+        <hr>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #sinReservas>
+    <p>No tienes reservas registradas.</p>
+  </ng-template>
+</div>

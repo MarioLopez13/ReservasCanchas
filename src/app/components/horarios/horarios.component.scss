@@ -1,0 +1,56 @@
+.horarios-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.horarios-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.horarios-card h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.horarios-list {
+  list-style: none;
+  padding: 0;
+}
+
+.horario-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.hora {
+  font-weight: 500;
+}
+
+.estado {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.estado.disponible {
+  color: green;
+}
+
+.estado.ocupado {
+  color: red;
+}
+
+.mensaje-error {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}

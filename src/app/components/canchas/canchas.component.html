@@ -1,0 +1,22 @@
+<div class="canchas-wrapper">
+  <h2 class="titulo">Canchas Disponibles</h2>
+
+  <!-- Botón para ver historial -->
+  <div class="acciones-superiores">
+    <button class="btn-historial" [routerLink]="['/historial']">
+      Ver historial de reservas
+    </button>
+  </div>
+
+  <div class="tarjetas">
+    <div class="tarjeta" *ngFor="let cancha of canchas">
+      <h3>{{ cancha.nombre }}</h3>
+      <p><strong>Tipo:</strong> {{ cancha.tipo }}</p>
+      <p><strong>Ubicación:</strong> {{ cancha.ubicacion }}</p>
+
+      <button class="btn-ver" [routerLink]="['/horarios', cancha.id]">
+        Ver horarios
+      </button>
+    </div>
+  </div>
+</div>

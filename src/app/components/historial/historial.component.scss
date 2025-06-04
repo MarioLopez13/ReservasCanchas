@@ -1,0 +1,25 @@
+.historial-wrapper {
+  padding: 2rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-cancelar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .btn-cancelar:hover {
+    background-color: #c0392b;
+  }
+}

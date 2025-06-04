@@ -1,0 +1,38 @@
+<div class="horarios-container">
+  <div class="horarios-card">
+    <h2>Horarios disponibles</h2>
+
+    <ng-container *ngIf="horarios.length > 0; else sinHorarios">
+      <ul class="horarios-list">
+        <li *ngFor="let horario of horarios" class="horario-item">
+          <span class="hora">{{ horario.horaInicio }} - {{ horario.horaFin }}</span>
+          <span 
+            class="estado" 
+            [ngClass]="{
+              'disponible': horario.estado === 'disponible',
+              'ocupado': horario.estado === 'ocupado'
+            }">
+            {{ horario.estado }}
+          </span>
+
+          <!-- 🔥 Mostrar descuento si hay -->
+          <span *ngIf="horario.descuento > 0" class="descuento">
+            🏷️ Descuento: {{ horario.descuento }}%
+          </span>
+
+          <!-- Botón solo si está disponible -->
+          <button 
+            *ngIf="horario.estado === 'disponible'" 
+            class="btn-reservar"
+            (click)="reservarHorario(horario)">
+            Reservar
+          </button>
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-template #sinHorarios>
+      <p class="mensaje-error">No hay horarios disponibles para esta cancha.</p>
+    </ng-template>
+  </div>
+</div>
