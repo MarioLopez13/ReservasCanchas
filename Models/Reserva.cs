@@ -5,22 +5,17 @@ namespace BackendReservas.Models
 public class Reserva
 {
     public int Id { get; set; }
-
     public int UsuarioId { get; set; }
 
-    [JsonIgnore] // <- Añade esto
-    public Usuario? Usuario { get; set; } // ahora puede ser null
-
+    public Usuario? Usuario { get; set; }  // ✅ sin JsonIgnore
     public int HorarioId { get; set; }
 
-    [JsonIgnore] // <- Añade esto
-    public Horario? Horario { get; set; } // ahora puede ser null
+    public Horario? Horario { get; set; }  // ✅ sin JsonIgnore
 
     public DateTime Fecha { get; set; }
-
-    public string Estado { get; set; }
-
+    public string Estado { get; set; } = string.Empty;
     public bool PromocionAplicada { get; set; }
 }
+
 
 }
