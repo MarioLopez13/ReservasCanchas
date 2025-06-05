@@ -4,3 +4,4 @@ services:
     env: static
     staticPublishPath: dist/frontend-reservas
     buildCommand: npm install && npm run build
+    staticPublishPath: dist/frontend-reservas
