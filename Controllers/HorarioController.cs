@@ -74,6 +74,22 @@ namespace BackendReservas.Controllers
                     descuento += 15;
                     razones.Add("Horario históricamente con baja demanda");
                 }
+                if (!ocupado && horarioDb.Disponible && hora > ahora)
+                {
+                    // Condición: si la última reserva cancelada fue en la última hora
+                    var fueLiberado = _context.Reservas.Any(r =>
+                        r.HorarioId == horarioDb.Id &&
+                        r.Estado == "cancelada" &&
+                        r.Fecha.Date == DateTime.Today &&
+                        r.Fecha.TimeOfDay >= ahora.Subtract(TimeSpan.FromMinutes(5))
+                    );
+
+                    if (fueLiberado)
+                    {
+                        descuento = Math.Max(descuento, 50);
+                        razones.Add("Horario liberado por cancelación reciente");
+                    }
+                }
 
                 bloques.Add(new
                 {

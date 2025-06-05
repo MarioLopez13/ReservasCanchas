@@ -53,7 +53,7 @@ namespace BackendReservas.Controllers
                 .Select(h => h.Id)
                 .ToListAsync();
 
-            // ✅ Validar máximo 2 reservas por cancha y por día
+            //  Validar máximo 2 reservas por cancha y por día
             var cantidad = await _context.Reservas.CountAsync(r =>
                 r.UsuarioId == reserva.UsuarioId &&
                 horariosCancha.Contains(r.HorarioId) &&
