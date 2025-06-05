@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: frontend-angular
+    env: static
+    staticPublishPath: dist/frontend-reservas
+    buildCommand: npm install && npm run build
