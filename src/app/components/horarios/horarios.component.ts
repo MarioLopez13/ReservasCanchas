@@ -30,11 +30,14 @@ export class HorariosComponent implements OnInit {
 
   cargarHorarios(): void {
     this.canchaService.getBloquesHorario(this.canchaId).subscribe(data => {
-      this.horarios = data;
-    });
+  console.log("Horarios cargados:", data); // Revisa si algunos tienen estado = ocupado
+  this.horarios = data;
+});
+
   }
 
   reservarHorario(horario: any): void {
+    console.log("Horario a reservar:", horario);
     if (horario.estado !== 'disponible') {
       alert('Este horario ya está ocupado.');
       return;
@@ -51,17 +54,17 @@ export class HorariosComponent implements OnInit {
       horarioId: horario.id,
       fecha: new Date().toISOString(),
       estado: 'confirmada',
-      promocionAplicada: horario.descuento > 0 // ✅ Marca si hubo descuento
+      promocionAplicada: horario.descuento > 0 //  Marca si hubo descuento
     };
-
+    console.log("Reserva a enviar:", reserva);
     this.canchaService.crearReserva(reserva).subscribe({
       next: () => {
-        alert('Reserva realizada correctamente ✅');
+        alert('Reserva realizada correctamente ');
         this.cargarHorarios();
       },
       error: err => {
         console.error(err);
-        alert('Error al reservar ❌');
+        alert('Error al reservar ');
       }
     });
   }

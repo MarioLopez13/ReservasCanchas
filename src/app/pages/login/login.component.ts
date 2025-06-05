@@ -36,7 +36,7 @@ export class LoginComponent {
       next: (res) => {
         alert(`Bienvenido, ${res.usuario.nombre}`);
         this.authService.guardarToken('temporal'); // usar JWT si está disponible
-        this.authService.guardarUsuario(res.usuario); // ✅ guarda el usuario logueado
+        this.authService.guardarUsuario(res.usuario); //  guarda el usuario logueado
         this.router.navigate(['/canchas']);
       },
       error: (err) => {

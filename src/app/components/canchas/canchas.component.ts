@@ -17,7 +17,7 @@ export class CanchasComponent implements OnInit {
     private canchaService: CanchaService,
     private router: Router //  Se inyecta el Router
   ) {}
-
+  // Guarda las canchas traídas del backend en el arreglo canchas
   ngOnInit() {
     this.canchaService.getCanchas().subscribe(data => {
       this.canchas = data;
@@ -25,8 +25,8 @@ export class CanchasComponent implements OnInit {
   }
 
   verHorarios(canchaId: number) {
-    // 🔜 Este será reemplazado por redirección real
+    
     alert(`Aquí se mostrarán los horarios para la cancha con ID: ${canchaId}`);
-    // Luego puedes usar esto: this.router.navigate(['/horarios', canchaId]);
+    
   }
 }
