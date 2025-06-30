@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackendReservas.Data;
 using BackendReservas.Models;
+using BackendReservas.Services;
 
 namespace BackendReservas.Controllers
 {
@@ -57,12 +58,13 @@ namespace BackendReservas.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
         [HttpPost("generar-automaticas")]
-        public async Task<IActionResult> GenerarPromociones([FromServices] PromocionService servicio)
+        public async Task<IActionResult> GenerarPromociones()
         {
+            var servicio = PromocionService.Instancia(_context);
             await servicio.GenerarPromocionesAutomaticas();
             return Ok("Promociones generadas automáticamente.");
         }
-
     }
 }
